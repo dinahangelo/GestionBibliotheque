@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="72e803ff-69cb-45c2-bad0-440163e0503b">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT emprunter.id, IF(emprunter.codeEmprunteur LIKE '%-%', professeur.nomProfesseur, eleve.nom) as nomEmprunteur, livre.libelleLivre, dateEmprunt, finEmprunt, classe, anneeScolaire, emprunter.nombreLivre, statut FROM emprunter LEFT JOIN professeur ON emprunter.codeEmprunteur = professeur.codeProfesseur LEFT JOIN eleve ON emprunter.codeEmprunteur = eleve.numeroMatricule JOIN livre ON emprunter.codeLivre = livre.codeLivre WHERE statut ='en retard' GROUP BY id ASC]]>
+	</queryString>
+	<field name="id" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nomEmprunteur" class="java.lang.String"/>
+	<field name="libelleLivre" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="dateEmprunt" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="finEmprunt" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="classe" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="anneeScolaire" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nombreLivre" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="statut" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="49" splitType="Stretch">
+			<staticText>
+				<reportElement x="289" y="12" width="255" height="20" uuid="762c56c8-652c-46d8-a553-89ab84c0bcf3"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[LISTE DES EMPRUNTS EN RETARD]]></text>
+			</staticText>
+			<image>
+				<reportElement x="110" y="0" width="77" height="49" uuid="6dae2db0-d588-4298-a404-f54597f436ed"/>
+				<imageExpression><![CDATA["/media/solofonirina/2EB5A0E4169EC762/PROJECT/UN-IT/GestionBibliotheque/src/com/gestionBibliotheque/image/Logo KMM FInale etoile.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="21" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="1" width="39" height="20" uuid="10b7803d-8ef8-4c64-9600-091a3b5a6f5a"/>
+				<box topPadding="2" leftPadding="4" bottomPadding="1" rightPadding="1">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<text><![CDATA[Classe]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="39" y="1" width="273" height="20" uuid="546b769e-7bc0-42e7-be55-8d22a1438aef"/>
+				<box topPadding="2" leftPadding="4" bottomPadding="1" rightPadding="1">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<text><![CDATA[Nom]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="312" y="1" width="116" height="20" uuid="8cc2b276-9d67-4ac9-9705-95fcd15cf734"/>
+				<box topPadding="2" leftPadding="4" bottomPadding="1" rightPadding="1">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<text><![CDATA[Livre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="501" y="1" width="100" height="20" uuid="d89b3088-9ee9-4d74-8519-91834ce3ea91"/>
+				<box topPadding="2" leftPadding="4" bottomPadding="1" rightPadding="1">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<text><![CDATA[Date d'emprunt]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="601" y="1" width="100" height="20" uuid="70d68bf5-5794-4ab4-abd9-2894a1534fe5"/>
+				<box topPadding="2" leftPadding="4" bottomPadding="1" rightPadding="1">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<text><![CDATA[Echéance]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="428" y="1" width="73" height="20" uuid="336b606c-d338-46d8-800f-42274a74291f"/>
+				<box topPadding="2" leftPadding="4" bottomPadding="1" rightPadding="1">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<text><![CDATA[Nombre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="701" y="1" width="100" height="20" uuid="f671c689-555a-4d23-8981-1e2e7ce2dd03"/>
+				<box topPadding="2" leftPadding="4" bottomPadding="1" rightPadding="1">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<text><![CDATA[Année scolaire]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="39" height="20" uuid="c8bfe019-8267-484c-8873-cc34a69d0f68"/>
+				<box topPadding="2" leftPadding="4" bottomPadding="1" rightPadding="1">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{classe}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="39" y="0" width="273" height="20" uuid="8a7b48e8-6760-4ddb-b309-5e48b49c804f"/>
+				<box topPadding="2" leftPadding="4" bottomPadding="1" rightPadding="1">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{nomEmprunteur}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="312" y="0" width="116" height="20" uuid="189666f3-09ee-41e0-a225-c93f3162f38d"/>
+				<box topPadding="2" leftPadding="4" bottomPadding="1" rightPadding="1">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{libelleLivre}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="601" y="0" width="100" height="20" uuid="f9eabb82-70ad-4639-8fc4-b596a7b7bae5"/>
+				<box topPadding="2" leftPadding="4" bottomPadding="1" rightPadding="1">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{finEmprunt}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="428" y="0" width="73" height="20" uuid="aa300e1c-3d62-44a4-be92-e4ab677c5bd7"/>
+				<box topPadding="2" leftPadding="4" bottomPadding="1" rightPadding="1">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{nombreLivre}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="501" y="0" width="100" height="20" uuid="ce56b5ff-e984-4ccc-b348-3e15f4905b19"/>
+				<box topPadding="2" leftPadding="4" bottomPadding="1" rightPadding="1">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{dateEmprunt}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="701" y="0" width="100" height="20" uuid="e723c867-a885-49c9-bdb8-549297319b57"/>
+				<box topPadding="2" leftPadding="4" bottomPadding="1" rightPadding="1">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{anneeScolaire}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="1" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

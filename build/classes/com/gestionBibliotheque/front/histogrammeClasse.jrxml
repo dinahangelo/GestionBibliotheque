@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a15624ca-0dd6-4343-8688-7a06a01fca98">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="ANNEE_PARAM" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT classe, COUNT(*) as nombre FROM `emprunter` WHERE anneeScolaire = $P{ANNEE_PARAM} GROUP BY classe ORDER BY CASE WHEN classe LIKE '12%' THEN 1 WHEN classe LIKE '11%' THEN 2 WHEN classe LIKE '10%' THEN 3 WHEN classe LIKE '9%' THEN 4 WHEN classe LIKE '8%' THEN 5 WHEN classe LIKE '7%' THEN 6 WHEN classe LIKE '6%' THEN 7 WHEN classe LIKE '5%' THEN 8 WHEN classe LIKE '4%' THEN 9 WHEN classe LIKE '3%' THEN 10 WHEN classe LIKE '2%' THEN 11 WHEN classe LIKE '1L%' THEN 12 WHEN classe LIKE '1S%' THEN 13 WHEN classe LIKE 'T%' THEN 14 END, classe;]]>
+	</queryString>
+	<field name="classe" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nombre" class="java.lang.Long"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="39" splitType="Stretch">
+			<staticText>
+				<reportElement x="140" y="0" width="523" height="36" uuid="22857886-2590-4bf7-8a2b-ac5a6179b4d9"/>
+				<textElement textAlignment="Center">
+					<font size="18"/>
+				</textElement>
+				<text><![CDATA[HISTOGRAMME DE PARTICIPATION PAR CLASSE]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="462" splitType="Stretch">
+			<barChart>
+				<chart>
+					<reportElement x="26" y="0" width="748" height="352" uuid="222ed2a8-1be4-44bf-8d47-a58ef2b625fa"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<categoryDataset>
+					<categorySeries>
+						<seriesExpression><![CDATA["Classes"]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{classe}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{nombre}]]></valueExpression>
+					</categorySeries>
+				</categoryDataset>
+				<barPlot>
+					<plot/>
+					<itemLabel/>
+					<categoryAxisFormat>
+						<axisFormat/>
+					</categoryAxisFormat>
+					<valueAxisFormat>
+						<axisFormat/>
+					</valueAxisFormat>
+				</barPlot>
+			</barChart>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

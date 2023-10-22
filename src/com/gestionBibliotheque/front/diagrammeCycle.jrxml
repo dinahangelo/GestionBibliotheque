@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="274a76be-623f-4227-afb2-9ae17fb1180f">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="8"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT CASE WHEN classe LIKE '12%' OR classe LIKE '11%' OR classe LIKE '10%' OR classe LIKE '9%' OR classe LIKE '8%' OR classe LIKE '7%' THEN 'Premier Cycle' WHEN classe LIKE '6%' OR classe LIKE '5%' OR classe LIKE '4%' OR classe LIKE '3%' THEN 'Second Cycle' WHEN classe LIKE '2%' OR classe LIKE '1L%' OR classe LIKE '1S%' OR classe LIKE 'T%' THEN 'Secondaire' END AS groupe, COUNT(*) as nombre FROM `emprunter` GROUP BY groupe]]>
+	</queryString>
+	<field name="groupe" class="java.lang.String"/>
+	<field name="nombre" class="java.lang.Long"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="24" splitType="Stretch">
+			<staticText>
+				<reportElement x="211" y="0" width="403" height="24" uuid="331b7a48-0705-45f0-a096-76b96bb2b699"/>
+				<textElement>
+					<font size="18"/>
+				</textElement>
+				<text><![CDATA[DIAGRAMME DE PARTICIPATION PAR CYCLE]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnFooter>
+		<band height="477" splitType="Stretch">
+			<pieChart>
+				<chart>
+					<reportElement x="97" y="0" width="577" height="448" uuid="66c75e4e-2f8f-46e4-9e5d-aece703366e6"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<pieDataset>
+					<keyExpression><![CDATA[$F{groupe}]]></keyExpression>
+					<valueExpression><![CDATA[$F{nombre}]]></valueExpression>
+				</pieDataset>
+				<piePlot>
+					<plot/>
+					<itemLabel/>
+				</piePlot>
+			</pieChart>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
